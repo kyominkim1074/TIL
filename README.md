@@ -1,4 +1,19 @@
+# 2022/0712-14
+
+[Python 문제 풀이](.\python 문제 풀이)
+
+# 2022/07/11
+
+[codeup_문제_풀이](./codeup/)
+
+# 2022/07/07
+
+[git의 branch와 github의 flow](./0707.md)
+
+
+
 ## MARKDOWN
+
 ## 2022/07/05 마크다운, git 기초 부분
 
 | 마크타운 문법 정리         | [마크다운_정리](./마크다운_정리.md) |
@@ -65,11 +80,3 @@
 
 - .gitignore 참고 사이트
   - [.gitignore](https://gitignore.io)
-
-# 2022/07/07
-
-[git의 branch와 github의 flow](./0707.md)
-
-# 2022/07/11
-
-[codeup_문제_풀이](./codeup/)
