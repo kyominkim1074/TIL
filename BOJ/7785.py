@@ -13,3 +13,23 @@ for _ in range(t):
 #딕셔너리의 모든 키값을 역순으로 정렬한다.
 for pp in sorted(person.keys(), reverse=True):
     print(pp)
+
+
+n=int(input())    
+logs = dict()
+for i in range(n):
+    key, value = input().split()
+    logs[key] = value
+# logs['baha'] = 'enter'
+# logs['askar'] = 'enter'
+# logs['baha'] = 'leave'
+# logs['artem'] = 'enter'
+    
+list_ = []
+for key in logs:
+    if logs[key] == 'enter':
+        list_.append(key)
+        
+list_.sort(reverse=True)
+for name in list_:
+    print(name)
