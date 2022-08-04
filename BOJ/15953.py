@@ -1,6 +1,6 @@
 t = int(input())
 
-def a(n):
+def codea(n):
     if n == 1:
         return 5000000
     elif n > 1 and n < 4:
@@ -16,7 +16,7 @@ def a(n):
     else:
         return 0
 
-def b(n):
+def codeb(n):
     if n == 1:
         return 5120000
     elif n > 1 and n < 4:
@@ -29,3 +29,7 @@ def b(n):
         return 320000
     else:
         return 0
+    
+for i in range(t):
+    a, b = map(int, input().split())
+    print(codea(a)+codeb(b))
