@@ -22,3 +22,21 @@ def bfs(gam):
     return len(f)-1
 
 print(bfs(1))
+
+n=int(input()) #정점개수
+m=int(input()) #간선개수
+graph=[[] for _ in range(n+1)] #인접리스트
+visited = [0]*(n+1)
+total = 0
+
+def dfs(start):
+    stack = [start]
+    visited[start] = 1
+    
+    while stack:
+        cur = stack.pop()
+        
+        for adj in graph[cur]:
+            if not visited[adj]:
+                visited[adj] = 1
+                stack.append(adj)
