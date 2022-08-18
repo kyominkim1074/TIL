@@ -1,18 +1,14 @@
-# 2022/07/19
 
-[SWEA_문제풀이](./SWEA)
 
-# 2022/07/12-14
+* [BOJ 문제풀이](./BOJ)
 
-[Python_문제풀이](./python/)
+* [SWEA_문제풀이](./SWEA)
 
-# 2022/07/11
+* [Python_문제풀이](./python/)
 
-[codeup_문제_풀이](./codeup/)
+* [codeup_문제_풀이](./codeup/)
 
-# 2022/07/07
-
-[git의 branch와 github의 flow](./0707.md)
+* [git의 branch와 github의 flow](./0707.md)
 
 ## MARKDOWN
 
