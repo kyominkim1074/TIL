@@ -72,3 +72,20 @@ SELECT is_drinking '음주 여부', smoking '흡연 여부', ROUND(AVG(weight/((
 FROM healthcare
 WHERE is_drinking!='' AND smoking!=''
 GROUP BY is_drinking, smoking;
+
+--추가 쿼리
+
+SELECT sido, ROUND(MOD(AVG(height), AVG(weight)), 2)
+FROM healthcare
+GROUP BY sido
+HAVING count(sido)>50000;
+
+SELECT sido, POWER(MOD(AVG(height), AVG(weight)), MOD(AVG(height), AVG(weight))) AS '평균키에 평균몸무게를 나눈 값의 제곱'
+FROM healthcare
+GROUP BY sido
+HAVING count(sido)>50000;
+
+SELECT sido, SQRT(POWER(MOD(AVG(height), AVG(weight)), MOD(AVG(height), AVG(weight)))) AS '평균키에 평균몸무게를 나눈 값의 제곱의 제곱근'
+FROM healthcare
+GROUP BY sido
+HAVING count(sido)>50000;
