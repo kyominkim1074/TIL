@@ -169,5 +169,11 @@ InvoiceLineId  InvoiceId  CustomerId
 | 단, CustomerId와 개수 컬럼을 `CustomerId` 기준으로 오름차순으로 5개만 출력하세요.
 
 ```sql
-
+CustomerId  COUNT(*)
+----------  --------
+1           38
+2           38
+3           38
+4           38
+5           38
 ```
