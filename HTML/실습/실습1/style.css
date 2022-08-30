@@ -1,0 +1,52 @@
+/* 아래에 CSS를 작성해주세요. */
+* {
+  box-sizing: border-box;
+  margin: 5px auto;
+}
+.headd {
+  width: 56.25rem;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.all {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+.bespoke {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.cardboard {
+  width: 56.25rem;
+}
+.card {
+  width: 18.75rem;
+  margin: 5px;
+  display: inline-block;
+}
+.card_image {
+  width: 100%;
+  border-radius: 1rem;
+}
+.inst {
+  font-size: 0.5rem;
+  vertical-align: bottom;
+  margin-left: 5%;
+}
+
+.guide {
+  vertical-align: middle;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-left: 5%;
+}
+.sub_board {
+  width: 15rem;
+  margin-left: 5%;
+}
+.sub {
+  vertical-align: middle;
+  font-size: 0.5rem;
+}
