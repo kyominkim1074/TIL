@@ -1,0 +1,44 @@
+/* 아래에 CSS를 작성해주세요. */
+* {
+  box-sizing: border-box;
+}
+.textline {
+  text-align: center;
+}
+
+.sub {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.cardboard {
+  width: 900px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.card {
+  width: 300px;
+  display: inline-block;
+  margin: 5px;
+}
+.card_image {
+  width: 100%;
+  border-radius: 1rem;
+}
+.card_text_1 {
+  font-size: 10px;
+  color: gray;
+  font-weight: bold;
+}
+
+.card_text_2 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.card_text_3 {
+  font-size: 10px;
+  color: gray;
+}

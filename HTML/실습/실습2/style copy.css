@@ -1,0 +1,54 @@
+/* 아래에 CSS를 작성해주세요. */
+* {
+  box-sizing: border-box;
+}
+.cardboard {
+  width: 900px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.card {
+  width: 300px;
+  display: inline-block;
+}
+.card_image {
+  width: 95%;
+  border-radius: 1rem;
+}
+.com {
+  font-size: 0.5rem;
+  text-indent: 5%;
+  margin: 2px;
+}
+.good {
+  font-size: 0.65rem;
+  text-indent: 5%;
+  margin: 2px;
+}
+.per {
+  color: aqua;
+  font-size: 0.8rem;
+  text-indent: 5%;
+  font-weight: bold;
+  margin: 2px;
+}
+.price {
+  color: black;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 2px;
+}
+.score {
+  color: #424242;
+  font-size: 0.7rem;
+  text-indent: 5%;
+  font-weight: bold;
+  margin: 2px;
+}
+.review {
+  color: #9d9fa0;
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin: 2px;
+}
