@@ -1,0 +1,111 @@
+.nav {
+  display: flex;
+  position: sticky;
+  top: 0;
+  height: 80px;
+  padding: 0 40px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.logo {
+  height: 60px;
+}
+
+.menu {
+  display: flex;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.menu_item {
+  margin: 10px;
+}
+
+.menu_link {
+  text-decoration: none;
+  color: black;
+}
+
+.menu_link:hover {
+  color: white;
+  background-color: black;
+  text-decoration: none;
+}
+
+.title {
+  display: flex;
+  height: 320px;
+  margin-top: 80px;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  height: 320px;
+  background-image: url("../images/background.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+}
+
+.aside {
+  padding: 1rem;
+  width: 20%;
+}
+
+.genre {
+  padding: 0;
+  margin: 0;
+}
+
+.movie {
+  width: 80%;
+  background-color: gainsboro;
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+}
+.text {
+  text-align: center;
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  flex-flow: column;
+}
+
+.card {
+  padding: 0 24px;
+}
+
+.image {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.movie_title {
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  height: 40px;
+  position: sticky;
+  bottom: 0;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.foot_text {
+  margin: 0;
+}
