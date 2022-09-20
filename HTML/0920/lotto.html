@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luck</title>
+  <style>
+    .num_ball {
+      width: 10rem;
+      height: 10rem;
+      margin: 1rem;
+      background-color: chocolate;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 10rem;
+      font-size: xx-large;
+      font-weight: bold;
+
+      display: inline-block;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+    .container {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>행운 번호 받기</h1>
+  <button id="btn">행운 번호 받기</button>
+  <div id="result"></div>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const button = document.querySelector('#btn')
+    button.addEventListener('click', function() {
+      for(var i=0; i<6; i++){
+        const container = document.createElement('div')
+        container.classList.add('container')
+  
+        const numbers = _.sampleSize(_.range(1, 45), 1)
+        console.log(numbers)
+  
+        const ball = document.createElement('div')
+        const result = document.querySelector('#result')
+        ball.classList.add('num_ball')
+        ball.innerText = numbers[0]
+        container.appendChild(ball)
+        result.appendChild(container)
+  
+        if(numbers[0] <= 10) {ball.style.backgroundColor='yello';}
+        else if(numbers[0] <= 20){ball.style.backgroundColor='blue';}
+        else if(numbers[0] <= 30){ball.style.backgroundColor='red';}
+        else if(numbers[0] <= 40){ball.style.backgroundColor='black'}
+        else if(numbers[0] <= 45){ball.style.backgroundColor='green'}
+      }
+
+    })
+
+    // 로또 공은 5가지 색깔로 되어 있습니다.
+// 1번부터 10번까지는 노란색입니다.
+// 11번 부터 20번까지는 파란색입니다.
+// 21번부터 30번까지는 빨간색입니다.
+// 31번부터 40번까지는 검은색입니다.
+// 41번부터 45번까지는 초록색입니다.
+  </script>
+</body>
+</html>
