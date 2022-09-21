@@ -1,3 +1,6 @@
+* [Django 개발환경 설정 서버 구동까지](./DJango/)
+> [readme](./DJango/README.md)
+
 * [HTML](./HTML)
 > [0920](./HTML/0920)
 >> [로또](./HTML/0920/lotto.html)
