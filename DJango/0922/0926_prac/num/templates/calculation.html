@@ -1,0 +1,20 @@
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Calculation</h1>
+  <p>{{num_a}} + {{num_b}} = {{num_a|add:num_b}}</p>
+  <p>{{num_a}} - {{num_b}} = {{num_a|sub:num_b}}</p>
+  <p>{{num_a}} * {{num_b}} = {{num_a|mul:num_b}}</p>
+  <p>{{num_a}} // {{num_b}} = {{num_a|intdiv:num_b}}</p>
+</body>
+
+</html>

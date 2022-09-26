@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Is odd even</h1>
+  <p>
+    {% if number|divisibleby:2 and number != 0 %}
+    {{ number }}은(는) 짝수입니다.
+    {% elif number == 0 %}
+    {{ number }}은(는) 0입니다.
+    {% else %}
+    {{ number }}은(는) 홀수입니다.
+    {% endif %}
+  </p>
+</body>
+
+</html>
