@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "random_",
     "num",
     "mathfilters",
     "django.contrib.admin",
