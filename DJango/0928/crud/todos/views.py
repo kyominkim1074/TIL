@@ -15,7 +15,6 @@ def create(request):
     content = request.GET.get("content")
     priority = request.GET.get("priority")
     deadline = request.GET.get("deadline")
-    completed = request.GET.get("completed")
     Todo.objects.create(content=content, priority=priority, deadline=deadline)
 
     return redirect("todos:index")

@@ -17,7 +17,7 @@
   <h1>Todo</h1>
   <form action="{% url 'todos:create' %}">
     <p>할 일</p>
-    <input class='w-100 p-2 mb-4' type="text" name="content" maxlength="80" value="할 일">
+    <input class='w-100 p-2 mb-4' type="text" name="content" maxlength="80">
     <p>우선 순위</p>
     <select class='form-select mb-4' name="priority">
       <option value="1">1</option>
@@ -34,6 +34,7 @@
   <table class="table table-dark table-striped" width="1000" height="50">
     <thead>
       <tr>
+        <th>ID</th>
         <th>우선 순위</th>
         <th>할 일 내용</th>
         <th>생성 날짜</th>
@@ -46,6 +47,7 @@
     <tbody>
       {% for todo in todos %}
       <tr>
+        <td>{{ todo.pk }}</td>
         <td>{{ todo.priority }}</td>
         <td>{{ todo.content }}</td>
         <td>{{ todo.create_at }}</td>
