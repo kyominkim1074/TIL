@@ -3,12 +3,13 @@
 
 {% block body %}
 <div class="container d-block justify-content-center my-3 w-50 text-center">
-  <h1 class="fw-bold">글 수정</h1>
+  <h1 class="fw-bold">Update</h1>
+  <hr>
   <form action="" method="POST">
     {% csrf_token %}
-    {% bootstrap_form article_form %}
-    <!-- {{ article_form.as_p }} -->
+    {% bootstrap_form movie_form %}
     {% bootstrap_button button_type="submit" content="OK" %}
+    <a href="{% url 'movies:index' %}" class="btn btn-danger">돌아가기</a>
   </form>
 </div>
 {% endblock %}

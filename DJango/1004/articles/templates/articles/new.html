@@ -1,10 +1,20 @@
-<h1>글 쓰기</h1>
-<!-- form : 사용자에게 양식을 제공하고 
-  값을 받아서(input : name, value) 
-  서버에 전송(form : action, method)-->
-<form action="{% url 'articles:new' %}" method="POST">
-  {% csrf_token %}
-  {{ article_form.as_p }}
-  <input type="submit" value="글쓰기">
-  <a href="{% url 'articles:index'%}">돌아가기</a>
-</form>
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+<div class="container d-block justify-content-center my-3 w-50 text-center">
+  <h1 class="fw-bold">글 쓰기</h1>
+  <hr>
+  <form action="{% url 'articles:new' %}" method="POST">
+    {% csrf_token %}
+    <!-- form을 bootstrap으로 적용시킨 경우 -->
+    {% bootstrap_form article_form %}
+    <!-- <input type="submit" value="글쓰기"> -->
+    <!-- bootstrap으로 버튼을 생성한 경우 -->
+    {% bootstrap_button button_type='submit' content='글 쓰기' %}
+    <a href="{% url 'articles:index' %}" class="btn btn-danger">Cancel</a>
+    <!-- <a href="{% url 'articles:index' %}">돌아가기</a> -->
+  </form>
+</div>
+
+{% endblock %}

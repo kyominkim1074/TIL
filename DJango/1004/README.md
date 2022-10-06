@@ -109,3 +109,28 @@ http://127.0.0.1:8000/articles/pk/update/
 기존의 객체의 pk를 불러와 삭제한 후에
 index로 redirect시킨다.
 http://127.0.0.1:8000/articles/pk/delete/
+
+## Django-bootstrap5
+### 1. install
+1. 터미널에 아래 명령어 입력하기
+```bash
+$ pip install django-bootstrap5 
+```
+2. settings.py의 INSTALLED_APPS에 'django_bootstrap5'를 추가하기
+
+### 2. 적용하기
+템플릿에 적용하기 위해선 django_bootstrap5를 로드시키고
+bootstrap_* 태그를 이용하면 된다.
+
+```html
+{% load django_bootstrap5 %}
+
+<form action="/url/to/submit/" method="post" class="form">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% bootstrap_button button_type="submit" content="OK" %}
+    {% bootstrap_button button_type="reset" content="Cancel" %}
+</form>
+```
