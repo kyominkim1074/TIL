@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+<h1 class="text-center my-3 fw-bold">Welcome!</h1>
+<div class="container d-flex justify-content-center">
+  <a href="{% url 'movies:index' %}" class="btn btn-success mx-2">커뮤티니로</a>
+  <a href="{% url 'accounts:accounts' %}" class="btn btn-primary mx-2">계정</a>
+  <a href="{% url 'accounts:signup' %}" class="btn btn-primary mx-2">계정생성</a>
+  {% endblock body %}
