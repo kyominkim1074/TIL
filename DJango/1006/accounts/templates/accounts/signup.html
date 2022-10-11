@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+<h1>signup</h1>
+<form action="POST">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <button type="submit" class='btn btn-primary'>추가</button>
+  <a href="{% url 'movies:index' %}" class="btn btn-danger">돌아가기</a>
+</form>
+{% endblock body %}
