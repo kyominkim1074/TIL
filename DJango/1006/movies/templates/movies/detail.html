@@ -11,7 +11,10 @@
     <hr>
     <a href="{% url 'movies:update' movie.pk %}" class="btn btn-primary">수정하기</a>
     <a href="{% url 'movies:index' %}" class="btn btn-primary">돌아가기</a>
-    <a href="{% url 'movies:delete' movie.pk %}" class="btn btn-danger">삭제하기</a>
+    <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="삭제" class="btn btn-danger">
+    </form>
   </div>
 </div>
 {% endblock %}

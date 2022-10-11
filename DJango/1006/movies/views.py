@@ -52,5 +52,7 @@ def update(request, pk):
 
 def delete(request, pk):
     movie = Movie.objects.get(pk=pk)
-    movie.delete()
-    return redirect("movies:index")
+    if request.method == "POST":
+        movie.delete()
+        return redirect("movies:index")
+    return render(request, "movies/detail.html")
