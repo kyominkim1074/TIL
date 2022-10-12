@@ -1,4 +1,3 @@
-from operator import is_
 from django.shortcuts import render, redirect
 
 from accounts.models import User
@@ -65,3 +64,8 @@ def login(request):
         "form": form,
     }
     return render(request, "accounts/login.html", context)
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect("movies:index")
