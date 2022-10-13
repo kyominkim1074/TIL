@@ -5,6 +5,7 @@
 <h1 class="text-center my-3 fw-bold">{{ user.username }}</h1>
 <h2 class="text-center my-4 fw-bold">id: {{ user.pk }}</h2>
 <h2 class="text-center my-4 fw-bold">email: {{ user.email }}</h2>
+<h2 class="text-center my-4 fw-bold">name: {{ user.full_name }}</h2>
 <div class="container d-flex justify-content-center">
   <a href="{% url 'movies:index' %}" class="btn btn-success mx-2">커뮤티니로</a>
   <a href="{% url 'accounts:accounts' %}" class="btn btn-primary mx-2">계정</a>
