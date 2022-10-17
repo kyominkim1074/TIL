@@ -15,5 +15,5 @@ class Article(models.Model):
         blank=True,
         processors=[ResizeToFill(1200, 960)],
         format="JPEG",
-        options={"quality:80"},
+        options={"quality": 80},
     )
