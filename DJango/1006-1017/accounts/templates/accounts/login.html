@@ -7,6 +7,6 @@
   {% csrf_token %}
   {% bootstrap_form form %}
   {% bootstrap_button button_type='submit' content='OK' %}
-  <a href="{% url 'movies:index' %}" class="btn btn-danger">돌아가기</a>
+  <a href="{% url 'articles:index' %}" class="btn btn-danger">돌아가기</a>
 </form>
 {% endblock body %}

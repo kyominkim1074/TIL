@@ -5,6 +5,8 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.shortcuts import redirect, render
+from django.contrib import messages
+from .forms import CustomUserChangeForm, CustomUserCreationForm
 
 from accounts.models import User
 
@@ -24,7 +26,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             auth_login(request, user)
-            return redirect("movies:index")
+            return redirect("articles:index")
     else:
         form = CustomUserCreationForm()
     context = {
@@ -61,7 +63,7 @@ def login(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
-            return redirect(request.GET.get("next") or "movies:index")
+            return redirect(request.GET.get("next") or "articles:index")
     else:
         form = AuthenticationForm()
     context = {

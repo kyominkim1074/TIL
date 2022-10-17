@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+
+{% if request.resolver_match.url_name == 'create' %}
+<h1> 글쓰기 </h1>
+{% else %}
+<h1> 수정하기 </h1>
+{% endif %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% bootstrap_button button_type='submit' content='OK' %}
+  {% if request.resolver_match.url_name == 'create' %}
+  <a href="{% url 'articles:index' %}">홈으로</a>
+  {% else %}
+  <a href="{% url 'articles:detail' article.pk %}">돌아가기</a>
+  {% endif %}
+
+</form>
+{% endblock %}

@@ -1,13 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-from .models import Article
-from .forms import ArticlForm
-
 from .forms import ArticleForm
 from .models import Article
-
-# Create your views here.
 
 # Create your views here.
 def index(request):
@@ -21,45 +16,48 @@ def index(request):
 @login_required
 def create(request):
     if request.method == "POST":
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(reques, "글 작성이 완료되었습니다.")
+            messages.success(request, "글 작성이 완료되었습니다.")
             return redirect("articles:index")
     else:
         form = ArticleForm()
     context = {
         "form": form,
     }
-    return render(request, "articles/create.html", context=context)
+    return render(request, "articles/form.html", context=context)
 
 
 def detail(request, pk):
-    movie = Movie.objects.get(pk=pk)
+    article = Article.objects.get(pk=pk)
     context = {
-        "movie": movie,
+        "article": article,
     }
-    return render(request, "movies/detail.html", context)
+    return render(request, "articles/detail.html", context)
 
 
+@login_required
 def update(request, pk):
-    movie = Movie.objects.get(pk=pk)
+    article = Article.objects.get(pk=pk)
     if request.method == "POST":
-        movie_form = MovieForm(request.POST, instance=movie)
-        if movie_form.is_valid():
-            movie_form.save()
-            return redirect("movies:detail", movie.pk)
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "글이 수정되었습니다.")
+            return redirect("articles:detail", article.pk)
     else:
-        movie_form = MovieForm(instance=movie)
+        form = ArticleForm(instance=article)
     context = {
-        "movie_form": movie_form,
+        "form": form,
     }
-    return render(request, "movies/update.html", context=context)
+    return render(request, "articles/form.html", context=context)
 
 
 def delete(request, pk):
-    movie = Movie.objects.get(pk=pk)
+    article = Article.objects.get(pk=pk)
     if request.method == "POST":
-        movie.delete()
-        return redirect("movies:index")
-    return render(request, "movies/detail.html")
+        article.delete()
+        messages.success(request, "글이 삭제되었습니다.")
+        return redirect("article:index")
+    return render(request, "articles/detail.html")
