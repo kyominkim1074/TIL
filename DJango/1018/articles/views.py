@@ -32,11 +32,11 @@ def create(request):
 
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
-    form = CommentForm()
+    comment_form = CommentForm()
     context = {
         "article": article,
         'comments': article.comment_set.all(),
-        'form': form
+        'comment_form': comment_form
     }
     return render(request, "articles/detail.html", context)
 
@@ -69,9 +69,15 @@ def delete(request, pk):
 
 def comment_create(request, pk):
     article = Article.objects.get(pk=pk)
-    form = CommentForm(request.POST)
-    if form.is_valid():
-        comment = form.save(commit=False)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
         comment.article = article
         comment.save()
     return redirect('articles:detail', article.pk)
+
+def comments_delete(request, article_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.method=='POST':
+        comment.delete()
+        return redirect('articles:detail', article_pk)
