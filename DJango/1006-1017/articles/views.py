@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
-from .forms import ArticleForm
-from .models import Article
+from .forms import ArticleForm, CommentForm
+from .models import Article, Comment
 
 # Create your views here.
 def index(request):
@@ -62,3 +62,13 @@ def delete(request, pk):
         messages.success(request, "글이 삭제되었습니다.")
         return redirect("articles:index")
     return render(request, "articles/detail.html")
+
+
+def detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    comment_form = CommentForm()
+    context = {
+        "article": article,
+        "comment_form": comment_form,
+    }
+    return render(request, "articles/detail.html", context)
