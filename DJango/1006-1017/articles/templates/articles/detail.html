@@ -19,7 +19,7 @@
 </div>
 <hr>
 <div class="container mx-3 my-3">
-  <form action="#" method="POST">
+  <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
     {% csrf_token %}
     {{ comment_form }}
     <input type="submit" class="btn btn-outline-primary" value="댓글쓰기">
