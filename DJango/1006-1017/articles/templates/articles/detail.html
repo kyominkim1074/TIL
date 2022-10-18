@@ -21,6 +21,9 @@
 <hr>
 <div class="container mx-3 my-3">
   <h4 class="my-3">댓글</h4>
+  {% if comments %}
+  <p><b>{{ comments|length }}개</b></p>
+  {% endif %}
   <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
     {% csrf_token %}
     {% bootstrap_form comment_form layout='inline' %}
@@ -28,7 +31,13 @@
   </form>
   <hr>
   {% for comment in comments %}
-  <p>{{ comment.content }}</p>
+  <li>
+    {{ comment.content }}
+    <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Delete">
+    </form>
+  </li>
   <hr>
   {% empty %}
   <p>댓글이 없습니다.</p>
