@@ -2,7 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from .forms import ArticleForm, CommentForm
-from .models import Article, Comment
+from .models import Article
+from xml.etree.ElementTree import Comment
 
 # Create your views here.
 def index(request):
@@ -35,6 +36,7 @@ def detail(request, pk):
     context = {
         "article": article,
         "comment_form": comment_form,
+        "comments": article.comment_set.all(),
     }
     return render(request, "articles/detail.html", context)
 
@@ -66,11 +68,11 @@ def delete(request, pk):
     return render(request, "articles/detail.html")
 
 
-def comments_create(request, pk):
+def comment_create(request, pk):
     article = Article.objects.get(pk=pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
         comment.article = article
-        comment_form.save()
-    return redirect("article:detail", article.pk)
+        comment.save()
+    return redirect("articles:detail", article.pk)
