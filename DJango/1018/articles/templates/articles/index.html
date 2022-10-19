@@ -21,6 +21,7 @@
       <img src="{{ article.image.url }}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ article.title }}</h5>
+        <p class="text-muted">{{ article.user.username }}</p>
         <a href="{% url 'articles:detail' article.pk %}" class="btn btn-primary my-3">자세히</a>
       </div>
     </div>

@@ -1,3 +1,4 @@
+from importlib.metadata import requires
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -18,7 +19,9 @@ def create(request):
     if request.method == "POST":
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            article = form.save(commit=False)
+            article.user = request.user
+            article.save()
             messages.success(request, "글 작성이 완료되었습니다.")
             return redirect("articles:index")
     else:
@@ -26,7 +29,7 @@ def create(request):
     context = {
         "form": form,
     }
-    return render(request, "articles/form.html", context=context)
+    return render(request, "articles/form.html", context)
 
 
 def detail(request, pk):
@@ -43,40 +46,56 @@ def detail(request, pk):
 @login_required
 def update(request, pk):
     article = Article.objects.get(pk=pk)
-    if request.method == "POST":
-        form = ArticleForm(request.POST, request.FILES, instance=article)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "글이 수정되었습니다.")
-            return redirect("articles:detail", article.pk)
+    if request.user == article.user:
+        if request.method == "POST":
+            form = ArticleForm(request.POST, request.FILES, instance=article)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "글이 수정되었습니다.")
+                return redirect("articles:detail", article.pk)
+        else:
+            form = ArticleForm(instance=article)
+        context = {
+            "article": article,
+            "form": form,
+        }
+        return render(request, "articles/form.html", context)
     else:
-        form = ArticleForm(instance=article)
-    context = {
-        "article": article,
-        "form": form,
-    }
-    return render(request, "articles/form.html", context)
+        messages.warning(request, '로그인이 필요한 서비스입니다.')
+        return redirect('articles:detail', article.pk)
+        
 
-
+@login_required
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
-    if request.method == "POST":
-        article.delete()
-        messages.success(request, "글이 삭제되었습니다.")
-        return redirect("articles:index")
-    return render(request, "articles/detail.html")
+    if request.user == article.user:            
+        if request.method == "POST":
+            article.delete()
+            messages.success(request, "글이 삭제되었습니다.")
+            return redirect("articles:index")
+        return render(request, "articles/detail.html")
+    else:
+        messages.warning(request, '로그인이 필요한 서비스입니다.')
+        return redirect('articles:detail', article.pk)
 
+@login_required
 def comment_create(request, pk):
     article = Article.objects.get(pk=pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
         comment.article = article
+        comment.user = request.user
         comment.save()
     return redirect('articles:detail', article.pk)
 
+@login_required
 def comments_delete(request, article_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
-    if request.method=='POST':
-        comment.delete()
+    if request.user == comment.user:
+        if request.method=='POST':
+            comment.delete()
         return redirect('articles:detail', article_pk)
+    else:
+        messages.warning(request, '로그인이 필요한 서비스입니다.')
+        return redirect('articles.detail', article_pk)
