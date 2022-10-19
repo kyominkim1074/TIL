@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from .forms import ArticleForm, CommentForm
 from .models import Article, Comment
-from xml.etree.ElementTree import Comment
 
 # Create your views here.
 def index(request):
