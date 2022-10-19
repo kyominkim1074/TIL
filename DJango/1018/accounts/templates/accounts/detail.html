@@ -3,7 +3,6 @@
 
 {% block body %}
 <h1 class="text-center my-3 fw-bold">{{ user.username }}</h1>
-<h2 class="text-center my-4 fw-bold">id: {{ user.pk }}</h2>
 <h2 class="text-center my-4 fw-bold">email: {{ user.email }}</h2>
 <h2 class="text-center my-4 fw-bold">name: {{ user.full_name }}</h2>
 <div class="container d-flex justify-content-center">
@@ -35,11 +34,25 @@
   </div>
 </div>
 <div class="d-flex justify-content-between mx-3 my-3 w-70">
-  {% for article in user.article_set.all %}
-  <p>
-    {{ forloop.counter }}
-    <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
-  </p>
-  {% endfor %}
+  <div class="col-6">
+    <h3>작성한 글</h3>
+    <p class="text-muted">{{ user.article_set.count }}</p>
+    {% for article in user.article_set.all %}
+    <p>
+      {{ forloop.counter }}
+      <a href="">{{ article.title }}</a>
+    </p>
+    {% endfor %}
+  </div>
+  <div class="col-6">
+    <h3>작성한 댓글</h3>
+    <p class="text-muted">{{ user.comment_set.count }}</p>
+    {% for article in user.comment_set.all %}
+    <p>
+      {{ forloop.counter }}
+      <a href="">{{ article.title }}</a>
+    </p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock body %}

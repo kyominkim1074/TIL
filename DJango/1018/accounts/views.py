@@ -37,7 +37,9 @@ def signup(request):
 
 def detail(request, pk):
     user = get_user_model().objects.get(pk=pk)
-    context = {"user": user}
+    context = {
+        "user": user,
+        }
     return render(request, "accounts/detail.html", context)
 
 

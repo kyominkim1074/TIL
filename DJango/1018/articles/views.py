@@ -1,4 +1,3 @@
-from importlib.metadata import requires
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -56,12 +55,11 @@ def update(request, pk):
         else:
             form = ArticleForm(instance=article)
         context = {
-            "article": article,
             "form": form,
         }
         return render(request, "articles/form.html", context)
     else:
-        messages.warning(request, '로그인이 필요한 서비스입니다.')
+        messages.warning(request, '잘못된 접근입니다.')
         return redirect('articles:detail', article.pk)
         
 
@@ -75,7 +73,7 @@ def delete(request, pk):
             return redirect("articles:index")
         return render(request, "articles/detail.html")
     else:
-        messages.warning(request, '로그인이 필요한 서비스입니다.')
+        messages.warning(request, '잘못된 접근입니다.')
         return redirect('articles:detail', article.pk)
 
 @login_required
@@ -95,7 +93,7 @@ def comments_delete(request, article_pk, comment_pk):
     if request.user == comment.user:
         if request.method=='POST':
             comment.delete()
-        return redirect('articles:detail', article_pk)
+            return redirect('articles:detail', article_pk)
     else:
-        messages.warning(request, '로그인이 필요한 서비스입니다.')
-        return redirect('articles.detail', article_pk)
+        messages.warning(request, '잘못된 접근입니다.')
+        return redirect('articles:detail', article_pk)
