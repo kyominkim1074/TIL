@@ -35,26 +35,31 @@
   </form>
   {% endif %}
 </div>
-<hr>
-<ul>
+<ul class="bg-dark text-white border border-secondary">
   <span class="f-bold">전체 댓글 | <span class="text-danger">{{ article.comment_set.count }}</span>개</span>
-  {% for comment in comments %}
-  <li>
-    <span>{{ comment.user }}</span> |
-    <span class="text-muted">{{ comment.created_at|date:'SHORT_DATETIME_FORMAT'}}</span>
-    <p>{{ comment.content }}</p>
-    <hr>
-    {% if request.user == comment.user %}
-    <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
-      {% csrf_token %}
-      {% bootstrap_button button_type='submit' content='삭제' %}
-    </form>
-    {% else %}
-    <button type="button" class="btn btn-secondary" disabled>삭제</button>
-    {% endif %}
-    <hr>
-  </li>
-  {% endfor %}
+  <div class="mx-4 ms-0">
+    {% for comment in comments %}
+    <li class="list-unstyled">
+      <div class="d-flex flex-row justify-content-between mx-2">
+        <div class="float-left">
+          <span>{{ comment.user }}</span> |
+          <span class="text-muted">{{ comment.created_at|date:'SHORT_DATETIME_FORMAT'}}</span>
+          <p>{{ comment.content }}</p>
+        </div>
+        <div class="float-right">
+          {% if request.user == comment.user %}
+          <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">삭제</button>
+          </form>
+          {% else %}
+          <button type="button" class="btn btn-secondary" disabled>삭제</button>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </div>
 </ul>
 <hr>
 {% endblock %}
