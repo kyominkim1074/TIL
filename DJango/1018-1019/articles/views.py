@@ -59,7 +59,7 @@ def update(request, pk):
         }
         return render(request, "articles/form.html", context)
     else:
-        messages.warning(request, '잘못된 접근입니다.')
+        messages.warning(request, '작성자만 수정할 수 있습니다.')
         return redirect('articles:detail', article.pk)
         
 
@@ -73,7 +73,7 @@ def delete(request, pk):
             return redirect("articles:index")
         return render(request, "articles/detail.html")
     else:
-        messages.warning(request, '잘못된 접근입니다.')
+        messages.warning(request, '작성자만 삭제할 수 있습니다.')
         return redirect('articles:detail', article.pk)
 
 @login_required
@@ -95,5 +95,5 @@ def comments_delete(request, article_pk, comment_pk):
             comment.delete()
             return redirect('articles:detail', article_pk)
     else:
-        messages.warning(request, '잘못된 접근입니다.')
+        messages.warning(request, '작성자만 삭제할 수 있습니다..')
         return redirect('articles:detail', article_pk)

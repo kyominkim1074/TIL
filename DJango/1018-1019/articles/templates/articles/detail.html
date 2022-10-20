@@ -34,13 +34,22 @@
 </div>
 <hr>
 <ul>
+  <span class="f-bold">전체 댓글 | <span class="text-danger">{{ article.comment_set.count }}</span>개</span>
   {% for comment in comments %}
   <li>
-    {{ comment.content }}
+    <span>{{ comment.user }}</span> |
+    <span class="text-muted">{{ comment.created_at|date:'SHORT_DATETIME_FORMAT'}}</span>
+    <p>{{ comment.content }}</p>
+    <hr>
+    {% if request.user == comment.user %}
     <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
       {% csrf_token %}
       {% bootstrap_button button_type='submit' content='삭제' %}
     </form>
+    {% else %}
+    <button type="button" class="btn btn-secondary" disabled>삭제</button>
+    {% endif %}
+    <hr>
   </li>
   {% endfor %}
 </ul>
