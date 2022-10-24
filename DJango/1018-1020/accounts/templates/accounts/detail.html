@@ -50,7 +50,7 @@
     {% for comment in user.comment_set.all %}
     <p>
       {{ forloop.counter }}
-      <a href="{% url 'articles:detail' comment.pk %}">{{ comment.content }}</a>
+      <a href="{% url 'articles:detail' comment.article_id %}">{{ comment.content }}</a>
     </p>
     {% endfor %}
   </div>

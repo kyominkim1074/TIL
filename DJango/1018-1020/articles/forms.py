@@ -11,5 +11,5 @@ class ArticleForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model=Comment
-        exclude = ("article", 'user',)
+        fields = ['content',]
     

@@ -1,0 +1,39 @@
+a {
+  text-decoration: none !important;
+  color: aliceblue;
+}
+
+a:hover {
+  color: aliceblue;
+}
+
+a:active {
+  color: aliceblue;
+}
+
+a:visited {
+  color: aliceblue;
+}
+
+a:link {
+  color
+}
+
+.text_ {
+  color: aliceblue;
+}
+
+.back_ {
+  background-color: rgb(57, 57, 57);
+  width: 70%;
+  justify-content: center;
+  display: block;
+  border: 2px solid rgb(199, 199, 199);
+  border-radius: 1%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.body {
+  background-color: rgb(39, 39, 39);
+}

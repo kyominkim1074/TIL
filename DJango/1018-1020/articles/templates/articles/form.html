@@ -3,25 +3,27 @@
 
 {% block body %}
 
-{% if request.resolver_match.url_name == 'create' %}
-<h1> 글쓰기 </h1>
-{% else %}
-<h1> 수정하기 </h1>
-{% endif %}
-
-<div class="mx-3">
-  <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% bootstrap_button button_type='submit' content='OK' %}
-  </form>
-</div>
-<div class="my-3 mx-3">
+<div class="my-3">
   {% if request.resolver_match.url_name == 'create' %}
-  <a href="{% url 'articles:index' %}" class="btn btn-warining">홈으로</a>
+  <h1> 글쓰기 </h1>
   {% else %}
-  <a href="{% url 'articles:index' %}" class="btn btn-warning">홈으로</a>
-  <a href="{% url 'articles:detail' article.pk %}" class="btn btn-danger">돌아가기</a>
+  <h1> 수정하기 </h1>
   {% endif %}
+
+  <div class="mx-3">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% bootstrap_button button_type='submit' content='OK' %}
+    </form>
+  </div>
+  <div class="my-3 mx-3">
+    {% if request.resolver_match.url_name == 'create' %}
+    <a href="{% url 'articles:index' %}" class="btn btn-warining">홈으로</a>
+    {% else %}
+    <a href="{% url 'articles:index' %}" class="btn btn-warning">홈으로</a>
+    <a href="{% url 'articles:detail' article.pk %}" class="btn btn-danger">돌아가기</a>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
