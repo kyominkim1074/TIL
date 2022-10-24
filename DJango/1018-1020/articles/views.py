@@ -106,3 +106,12 @@ def likes(request, article_pk):
     else:
         article.like_users.add(request.user)
     return redirect('articles:detail', article_pk)
+
+@login_required
+def dislikes(request, article_pk):
+    article=Article.objects.get(pk=article_pk)
+    if request.user in article.dislike_users.all():
+        article.dislike_users.remove(request.user)
+    else:
+        article.dislike_users.add(request.user)
+    return redirect('articles:detail', article_pk)
