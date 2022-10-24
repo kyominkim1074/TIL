@@ -24,6 +24,17 @@
     <input type="submit" value="삭제" class="btn btn-danger my-3">
   </form>
   <a href="{% url 'articles:index' %}" class="btn btn-warning">돌아가기</a>
+  <span>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'articles:likes' article.pk %}" class="like-heart">
+      {% if request.user in article.like_users.all %}
+      <i class="bi bi-heartbreak-fill"></i>
+      {% else %}
+      <i class="bi bi-heart-fill"></i>
+      {% endif %}
+    </a>|{{ article.like_users.count }}
+    {% endif %}
+  </span>
 </div>
 <div class="container mx-3 my-3">
   <h4 class="my-3">댓글</h4>
