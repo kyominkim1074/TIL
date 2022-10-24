@@ -34,9 +34,9 @@
   </div>
 </div>
 <div class="d-flex justify-content-between mx-3 my-3 w-70">
-  <div class="col-6">
+  <div class="col-3">
     <h3>작성한 글</h3>
-    <p class="text-muted">{{ user.article_set.count }}</p>
+    <p class="text-muted">{{ user.article_set.count }}개</p>
     {% for article in user.article_set.all %}
     <p>
       {{ forloop.counter }}
@@ -44,9 +44,9 @@
     </p>
     {% endfor %}
   </div>
-  <div class="col-6">
+  <div class="col-3">
     <h3>작성한 댓글</h3>
-    <p class="text-muted">{{ user.comment_set.count }}</p>
+    <p class="text-muted">{{ user.comment_set.count }}개</p>
     {% for comment in user.comment_set.all %}
     <p>
       {{ forloop.counter }}
@@ -54,10 +54,20 @@
     </p>
     {% endfor %}
   </div>
-  <div class="col-6">
+  <div class="col-3">
     <h3>좋아요 누른 글</h3>
     <p class="text-muted">{{ user.like_articles.count }}</p>
     {% for comment in user.like_articles.all %}
+    <p>
+      {{ forloop.counter }}
+      <a href="{% url 'articles:detail' article.article_id %}">{{ article.title }}</a>
+    </p>
+    {% endfor %}
+  </div>
+  <div class="col-3">
+    <h3>싫어요 누른 글</h3>
+    <p class="text-muted">{{ user.dislike_articles.count }}</p>
+    {% for comment in user.dislike_articles.all %}
     <p>
       {{ forloop.counter }}
       <a href="{% url 'articles:detail' article.article_id %}">{{ article.title }}</a>
