@@ -2,7 +2,7 @@
 {% load django_bootstrap5 %}
 
 {% block body %}
-<div class="mx-3">
+<div>
   <h1>{{ article.title }}</h1>
   <h3>
     <a href="{% url 'accounts:detail' article.pk %}" class="text-decoration-none text-black fw-bold fs-4">
@@ -15,7 +15,7 @@
   <img src="{{ article.image.url }}" alt="{{ article.image }}" width="400" height="300">
   {% endif %}
 </div>
-<div class="mx-3 my-3">
+<div class="my-3">
   <span>
     {% if request.user == article.user %}
     <a href="{% url 'articles:update' article.pk %}" class="btn btn-primary">수정하기</a>
@@ -53,7 +53,7 @@
     {% endif %}
   </span>
 </div>
-<div class="container mx-3 my-3">
+<div class="container my-3">
   <h4 class="my-3">댓글</h4>
   {% if request.user.is_authenticated %}
   <form action="{% url 'articles:comment_create' article.pk %}" method="POST">

@@ -1,0 +1,14 @@
+.heart {
+  text-decoration: none !important;
+}
+
+.text_ {
+  color: aliceblue;
+}
+
+.back_ {
+  background-color: grey;
+  width: 70%;
+  justify-content: center;
+  display: block;
+}

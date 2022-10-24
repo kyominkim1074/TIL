@@ -33,7 +33,7 @@ def signup(request):
     }
     return render(request, "accounts/signup.html", context)
 
-
+@login_required
 def detail(request, pk):
     user = get_user_model().objects.get(pk=pk)
     context = {
