@@ -5,7 +5,7 @@
 <div>
   <h1>{{ article.title }}</h1>
   <h3>
-    <a href="{% url 'accounts:detail' article.pk %}" class="text-decoration-none text-black fw-bold fs-4">
+    <a href="{% url 'accounts:detail' article.user.pk %}" class="text-decoration-none text-black fw-bold fs-4">
       {{ article.user.username }}
     </a>
   </h3>

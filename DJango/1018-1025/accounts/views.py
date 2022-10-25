@@ -33,7 +33,6 @@ def signup(request):
     }
     return render(request, "accounts/signup.html", context)
 
-@login_required
 def detail(request, pk):
     user = get_object_or_404(get_user_model(), pk=pk)
     context = {

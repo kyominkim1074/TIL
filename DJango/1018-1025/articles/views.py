@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .forms import ArticleForm, CommentForm
 from .models import Article, Comment
 
@@ -32,7 +32,7 @@ def create(request):
 
 
 def detail(request, pk):
-    article = Article.objects.get(pk=pk)
+    article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm()
     context = {
         "article": article,
@@ -44,7 +44,7 @@ def detail(request, pk):
 
 @login_required
 def update(request, pk):
-    article = Article.objects.get(pk=pk)
+    article = get_object_or_404(Article, pk=pk)
     if request.user == article.user:
         if request.method == "POST":
             form = ArticleForm(request.POST, request.FILES, instance=article)
@@ -65,7 +65,7 @@ def update(request, pk):
 
 @login_required
 def delete(request, pk):
-    article = Article.objects.get(pk=pk)
+    article = get_object_or_404(Article, pk=pk)
     if request.user == article.user:            
         if request.method == "POST":
             article.delete()
@@ -78,7 +78,7 @@ def delete(request, pk):
 
 @login_required
 def comment_create(request, pk):
-    article = Article.objects.get(pk=pk)
+    article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
@@ -89,7 +89,7 @@ def comment_create(request, pk):
 
 @login_required
 def comments_delete(request, article_pk, comment_pk):
-    comment = Comment.objects.get(pk=comment_pk)
+    comment = Comment.objects.get(Article, pk=comment_pk)
     if request.user == comment.user:
         if request.method=='POST':
             comment.delete()
@@ -100,7 +100,7 @@ def comments_delete(request, article_pk, comment_pk):
     
 @login_required
 def likes(request, article_pk):
-    article=Article.objects.get(pk=article_pk)
+    article=get_object_or_404(Article, pk=article_pk)
     if request.user in article.like_users.all():
         article.like_users.remove(request.user)
     else:
@@ -109,7 +109,7 @@ def likes(request, article_pk):
 
 @login_required
 def dislikes(request, article_pk):
-    article=Article.objects.get(pk=article_pk)
+    article=get_object_or_404(Article, pk=article_pk)
     if request.user in article.dislike_users.all():
         article.dislike_users.remove(request.user)
     else:

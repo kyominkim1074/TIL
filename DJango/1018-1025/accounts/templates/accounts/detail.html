@@ -6,14 +6,18 @@
 <h2 class="text-center my-4 fw-bold">email: {{ user.email }}</h2>
 <h2 class="text-center my-4 fw-bold">name: {{ user.full_name }}</h2>
 <p>팔로우 : {{ user.followings.count }} | 팔로워 : {{ user.followers.count }}</p>
-{% if request.user != user %}
-<a href="{% url 'accounts:follow' user.pk %}" class="btn btn-primary">
+{% if request.user.is_authenticated %}
+<a href="{% url 'accounts:follow' user.pk %}">
+  {% if request.user != user %}
   {% if request.user in user.followers.all %}
-  팔로우 취소
+  <button class="btn btn-danger">팔로우 취소</button>
   {% else %}
-  팔로우
+  <button class="btn btn-primary">팔로우 </button>
   {% endif %}
 </a>
+{% endif %}
+{% else %}
+<button class="btn disabled">로그인이 필요합니다.</button>
 {% endif %}
 <div class="container d-flex justify-content-center">
   <a href="{% url 'articles:index' %}" class="btn btn-success mx-2">커뮤티니로</a>
