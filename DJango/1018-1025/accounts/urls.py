@@ -14,4 +14,5 @@ urlpatterns = [
     path("logout/", views.logout, name="logout"),
     path("accounts/update/", views.update, name="update"),
     path("accounts/password/", views.password_update, name="password"),
+    path("<int:pk>/follow/", views.follow, name="follow"),
 ]

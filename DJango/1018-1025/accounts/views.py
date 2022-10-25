@@ -4,7 +4,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
@@ -35,7 +35,7 @@ def signup(request):
 
 @login_required
 def detail(request, pk):
-    user = get_user_model().objects.get(pk=pk)
+    user = get_object_or_404(get_user_model(), pk=pk)
     context = {
         "user": user,
         }
@@ -106,3 +106,15 @@ def password_update(request):
         "form": form,
     }
     return render(request, "accounts/password.html", context)
+
+@login_required
+def follow(request, pk):
+    user = get_object_or_404(get_user_model(), pk=pk)
+    if request.user == user:
+        messages.warning(request, '스스로를 팔로우 할 수 없습니다.')
+        return redirect('accounts:detail', pk)
+    if request.user in user.followers.all():
+        user.followers.remove(request.user)
+    else:
+        user.followers.add(request.user)
+    return redirect('accounts:detail', pk)
