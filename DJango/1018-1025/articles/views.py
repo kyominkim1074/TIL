@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import ArticleForm, CommentForm
 from .models import Article, Comment
+from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
@@ -78,6 +79,7 @@ def delete(request, pk):
 
 @login_required
 def comment_create(request, pk):
+    print(request.POST)
     article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
@@ -85,7 +87,11 @@ def comment_create(request, pk):
         comment.article = article
         comment.user = request.user
         comment.save()
-    return redirect('articles:detail', article.pk)
+        context = {
+            'content': comment.comment,
+            'userName': comment.user.username,
+        }
+    return JsonResponse(context)
 
 @login_required
 def comments_delete(request, article_pk, comment_pk):
