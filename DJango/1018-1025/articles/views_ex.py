@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import ArticleForm, CommentForm
 from .models import Article, Comment
+from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
@@ -31,16 +32,16 @@ def create(request):
     return render(request, "articles/form.html", context)
 
 
+
 def detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm()
     context = {
-        "article": article,
+        'article': article,
         'comments': article.comment_set.all(),
-        'comment_form': comment_form
+        'comment_form': comment_form,
     }
-    return render(request, "articles/detail.html", context)
-
+    return render(request, 'articles/detail.html', context)
 
 @login_required
 def update(request, pk):
@@ -76,8 +77,10 @@ def delete(request, pk):
         messages.warning(request, '작성자만 삭제할 수 있습니다.')
         return redirect('articles:detail', article.pk)
 
+
 @login_required
 def comment_create(request, pk):
+    print(request.POST)
     article = get_object_or_404(Article, pk=pk)
     comment_form = CommentForm(request.POST)
     if comment_form.is_valid():
@@ -85,7 +88,11 @@ def comment_create(request, pk):
         comment.article = article
         comment.user = request.user
         comment.save()
-    return redirect('articles:detail', article.pk)
+        context = {
+            'content': comment.content,
+            'userName': comment.user.username
+        }
+        return JsonResponse(context)
 
 @login_required
 def comments_delete(request, article_pk, comment_pk):
