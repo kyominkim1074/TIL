@@ -89,7 +89,7 @@ def comment_create(request, pk):
 
 @login_required
 def comments_delete(request, article_pk, comment_pk):
-    comment = Comment.objects.get(Article, pk=comment_pk)
+    comment = Comment.objects.get(pk=comment_pk)
     if request.user == comment.user:
         if request.method=='POST':
             comment.delete()
