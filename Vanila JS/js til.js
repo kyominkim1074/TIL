@@ -41,3 +41,9 @@ var myFalse = new Boolean(false);   // 초기값 거짓
 var g = Boolean(myFalse);           // 초기값 참
 var myString = new String('Hello'); // 문자열 객체
 var s = Boolean(myString);          // 초기값 참
+
+let fruits = ['사과', '바나나']
+console.log(fruits.length)
+fruits.forEach(function (item, index, array) {
+  console.log(item, index)
+})
