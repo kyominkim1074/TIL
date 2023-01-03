@@ -77,3 +77,25 @@ if (x__) {
 var x1 = Boolean(expression);     // 추천
 var x2 = new Boolean(expression); // 사용하지 말것
 ```
+
+값이 false인 Boolean 객체를 포함한 어떠한 객체를 Boolean 객체의 초기값으로 넘겨주더라도 새로운 Boolean 객체는 true를 가집니다.
+
+```javascript
+var myFalse = new Boolean(false);   // 초기값 거짓 #1
+var g = Boolean(myFalse);           // 초기값 참 #2
+var myString = new String('Hello'); // 문자열 객체 #3
+var s = Boolean(myString);          // 초기값 참 #4
+```
+
+#1
+![ex1](./boolean_3.png)
+
+#2
+![ex2](./boolean_4.png)
+
+#3
+![ex3](./boolean_5.png)
+
+#4
+![ex4](./boolean_6.png)
+
