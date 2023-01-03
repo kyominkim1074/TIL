@@ -36,6 +36,3 @@ var x__ = false;
 if (x__) {
   // 이 코드는 실행되지 않음
 }
-
-var x1 = Boolean(expression);     // 추천
-var x2 = new Boolean(expression); // 사용하지 말것
