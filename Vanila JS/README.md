@@ -50,6 +50,7 @@ var x_ = new Boolean(false);
 if (x_) {
   // 이 코드는 실행됨
 }
+
 ![result](./boolean_1.png)
 
 그러나 원시 Boolean 값에는 적용되지 않습니다. 따라서 아래 if 문의 조건은 거짓입니다.
@@ -58,3 +59,5 @@ var x__ = false;
 if (x__) {
   // 이 코드는 실행되지 않음
 }
+
+![result2](./boolean_2.png)
