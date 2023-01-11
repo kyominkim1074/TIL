@@ -61,3 +61,20 @@
 // console.log(player);
 // console.log(player.name);
 
+// function sayHello(nameOfPerson, age) {
+//   console.log(nameOfPerson, age);
+// }
+
+// sayHello("bak", 12);
+// sayHello("kim", 15);
+
+function plus(a, b) {
+  console.log(a + b);
+}
+
+function divide(c, d) {
+  console.log(c / d);
+}
+
+plus(10, 120);
+divide(30, 8)
