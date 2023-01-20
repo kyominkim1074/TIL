@@ -79,28 +79,43 @@
 // plus(10, 120);
 // divide(30, 8)
 
-const calculator = {
-  plus: function (a, b) {
-    return a + b;
-  },
-  minus: function (a, b) {
-    return a - b;
-  },
-  times: function (a, b) {
-    return a * b;
-  },
-  divide: function (a, b) {
-    return a / b;
-  },
-  power: function (a, b) {
-    return a ** b;
-  },
-}
+// const calculator = {
+//   plus: function (a, b) {
+//     return a + b;
+//   },
+//   minus: function (a, b) {
+//     return a - b;
+//   },
+//   times: function (a, b) {
+//     return a * b;
+//   },
+//   divide: function (a, b) {
+//     return a / b;
+//   },
+//   power: function (a, b) {
+//     return a ** b;
+//   },
+// }
 
-const plusResult = calculator.plus(2, 3);
-console.log(plusResult)
-const minusResult = calculator.minus(plusResult, 10);
-console.log(minusResult)
-const timesResult = calculator.times(minusResult, -10);
-const divideResult = calculator.divide(timesResult, 2);
-const powerResult = calculator.power(divideResult, divideResult);
+// const plusResult = calculator.plus(2, 3);
+// console.log(plusResult)
+// const minusResult = calculator.minus(plusResult, 10);
+// console.log(minusResult)
+// const timesResult = calculator.times(minusResult, -10);
+// const divideResult = calculator.divide(timesResult, 2);
+// const powerResult = calculator.power(divideResult, divideResult);
+
+const age = parseInt(prompt("age?"));
+
+// || = or, && = and
+if (isNaN(age) || age < 0) {
+  console.log("Please write a real positive number.");
+} else if (age < 18) {
+  console.log("You are not adult.")
+} else if (age > 50 && age <= 50) {
+  console.log("You are adult.")
+} else if (age > 50 && age <= 80) {
+  console.log("You should take care of your health.")
+} else if (age > 80) {
+  console.log("You can do whatever you want.")
+}
