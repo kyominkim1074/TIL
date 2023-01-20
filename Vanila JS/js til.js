@@ -68,13 +68,39 @@
 // sayHello("bak", 12);
 // sayHello("kim", 15);
 
-function plus(a, b) {
-  console.log(a + b);
+// function plus(a, b) {
+//   console.log(a + b);
+// }
+
+// function divide(c, d) {
+//   console.log(c / d);
+// }
+
+// plus(10, 120);
+// divide(30, 8)
+
+const calculator = {
+  plus: function (a, b) {
+    return a + b;
+  },
+  minus: function (a, b) {
+    return a - b;
+  },
+  times: function (a, b) {
+    return a * b;
+  },
+  divide: function (a, b) {
+    return a / b;
+  },
+  power: function (a, b) {
+    return a ** b;
+  },
 }
 
-function divide(c, d) {
-  console.log(c / d);
-}
-
-plus(10, 120);
-divide(30, 8)
+const plusResult = calculator.plus(2, 3);
+console.log(plusResult)
+const minusResult = calculator.minus(plusResult, 10);
+console.log(minusResult)
+const timesResult = calculator.times(minusResult, -10);
+const divideResult = calculator.divide(timesResult, 2);
+const powerResult = calculator.power(divideResult, divideResult);
